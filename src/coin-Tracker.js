@@ -4,6 +4,15 @@ import { useState, useEffect } from 'react';
 function Coin() {
     const [loading, setLoading] = useState(true);
     const [coins, setCoins] = useState([]);
+    const [dollar, setDollar] = useState("");
+    const [submit, setSubmit] = useState(false);
+
+    const onChange = (event) => setDollar(event.target.value);
+    const onSubmit = () => {
+        setSubmit(true);
+        console.log(dollar);
+    };
+
     useEffect(() => {
         fetch("https://api.coinpaprika.com/v1/tickers")
         .then((response) => response.json())
@@ -11,18 +20,31 @@ function Coin() {
             setCoins(json);
             setLoading(false);
         });
-    }, [])
+    }, [submit])
     return (
         <div>
             <h1>The coins!{loading ? "" : `(${coins.length})`}</h1>
+            <form onSubmit={onSubmit}>
+                <input value={dollar} onChange={onChange} type="number" placeholder="Dollars" />
+                <button>Submit</button>
+            </form>
             {loading ? <strong>Loading...</strong> : null}
+            {/* <select>
+                {coins.map((coin) => (
+                    <option>
+                        {{dollarcoin.quotes.USD.price}}
+                    </option>
+                ))}
+            </select> */}
+            
+            {/* {loading ? <strong>Loading...</strong> : null}
             <select>
                 {coins.map((coin) => (
                     <option>
                         {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD
                     </option>
                 ))}
-            </select>
+            </select> */}
         </div>
     );
 }
