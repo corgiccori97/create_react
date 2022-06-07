@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // input 만들어서 몇 달러 가졌는지 받고, 어떤 비트코인을 가질 수 있는지 만들어보기
+// 꼭 다시 패러 온다...
 function Coin() {
     const [loading, setLoading] = useState(true);
     const [coins, setCoins] = useState([]);
@@ -24,10 +25,7 @@ function Coin() {
     return (
         <div>
             <h1>The coins!{loading ? "" : `(${coins.length})`}</h1>
-            <form onSubmit={onSubmit}>
-                <input value={dollar} onChange={onChange} type="number" placeholder="Dollars" />
-                <button>Submit</button>
-            </form>
+            <input value={dollar} onChange={onChange} type="number" placeholder="Dollars" />
             {loading ? <strong>Loading...</strong> : null}
             {/* <select>
                 {coins.map((coin) => (
