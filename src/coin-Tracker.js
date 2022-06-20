@@ -24,25 +24,27 @@ function Coin() {
     }, [submit])
     return (
         <div>
-            <h1>The coins!{loading ? "" : `(${coins.length})`}</h1>
-            <input value={dollar} onChange={onChange} type="number" placeholder="Dollars" />
-            {loading ? <strong>Loading...</strong> : null}
-            {/* <select>
+            <form onSubmit={onSubmit}>
+                <h1>The coins!{loading ? "" : `(${coins.length})`}</h1>
+                <input value={dollar} onChange={onChange} type="number" placeholder="Dollars" />
+            </form>
+            {/* {loading ? <strong>Loading...</strong> : 
+            <select>
                 {coins.map((coin) => (
                     <option>
-                        {{dollarcoin.quotes.USD.price}}
+                        {coin.quotes.USD.price}
                     </option>
                 ))}
-            </select> */}
-            
-            {/* {loading ? <strong>Loading...</strong> : null}
+            </select> }
+             */}
+            {loading ? <strong>Loading...</strong> : 
             <select>
                 {coins.map((coin) => (
                     <option>
                         {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD
                     </option>
                 ))}
-            </select> */}
+            </select>}
         </div>
     );
 }
