@@ -1,0 +1,19 @@
+.movies {
+    display: inline-block;
+}
+
+.eachmovie {
+    width: 15rem;
+    height: 8rem;
+}
+
+.eachmovie h2 {
+    font-size: inherit;
+    text-align: center;
+}
+/* .cover {
+    /* width: 5rem; */
+    /* height: 5rem; 
+} 
+*/
+
